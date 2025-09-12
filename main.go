@@ -19,7 +19,7 @@ func main() {
 
 	opts := providerserver.ServeOpts{
 		// TODO: Update this string with the published name of your provider.
-		Address: "registry.terraform.io/cerifi/auth0-connections",
+		Address: "registry.terraform.io/chc201627/auth0-connections",
 		Debug:   debug,
 	}
 

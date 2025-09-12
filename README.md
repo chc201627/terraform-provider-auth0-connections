@@ -48,7 +48,7 @@ make install
 terraform {
   required_providers {
     auth0-connections = {
-      source  = "registry.terraform.io/cerifi/auth0-connections"
+      source  = "registry.terraform.io/chc201627/auth0-connections"
       version = "~> 1.0"
     }
   }

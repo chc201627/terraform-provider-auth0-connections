@@ -26,9 +26,21 @@ archives:
       - README.md
       - LICENSE
 
+# Terraform Registry specific configuration
+terraform:
+  provider_name: "auth0-connections"
+  namespace: "chc201627"
+  platforms:
+    - "darwin_amd64"
+    - "darwin_arm64"
+    - "linux_amd64"
+    - "linux_arm64"
+    - "windows_amd64"
+    - "windows_arm64"
+
 release:
   github:
-    owner: cerifi
+    owner: chc201627
     name: terraform-provider-auth0-connections
   draft: false
   prerelease: false
