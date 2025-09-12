@@ -40,6 +40,11 @@ release:
   mode: replace
   replace_existing_artifacts: true
 
+signs:
+  - artifacts: checksum
+    signature: "${artifact}.sig"
+    args: ["--batch", "--yes", "--detach-sign", "--armor", "${artifact}"]
+
 changelog:
   sort: asc
   filters:
