@@ -1,9 +1,12 @@
 # GoReleaser configuration for Terraform Provider
 # This file is used to build and release the provider binaries
 
+version: 2
+
 builds:
   - id: "terraform-provider-auth0-connections"
     binary: "terraform-provider-auth0-connections"
+    main: .
     goos:
       - linux
       - windows
@@ -11,10 +14,11 @@ builds:
     goarch:
       - amd64
       - arm64
-    flags:
-      - -ldflags=-s -w -X main.version={{.Version}}
+    ldflags:
+      - -s -w -X main.version={{.Version}}
     env:
       - CGO_ENABLED=0
+    mod_timestamp: "{{ .CommitTimestamp }}"
 
 archives:
   - id: "terraform-provider-auth0-connections"
@@ -26,18 +30,6 @@ archives:
       - README.md
       - LICENSE
 
-# Terraform Registry specific configuration
-terraform:
-  provider_name: "auth0-connections"
-  namespace: "chc201627"
-  platforms:
-    - "darwin_amd64"
-    - "darwin_arm64"
-    - "linux_amd64"
-    - "linux_arm64"
-    - "windows_amd64"
-    - "windows_arm64"
-
 release:
   github:
     owner: chc201627
@@ -46,6 +38,7 @@ release:
   prerelease: false
   name_template: "v{{.Version}}"
   mode: replace
+  replace_existing_artifacts: true
 
 changelog:
   sort: asc
