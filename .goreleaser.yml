@@ -1,0 +1,43 @@
+# GoReleaser configuration for Terraform Provider
+# This file is used to build and release the provider binaries
+
+builds:
+  - id: "terraform-provider-auth0-connections"
+    binary: "terraform-provider-auth0-connections"
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    flags:
+      - -ldflags=-s -w -X main.version={{.Version}}
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - id: "terraform-provider-auth0-connections"
+    name_template: "terraform-provider-auth0-connections_{{.Version}}_{{.Os}}_{{.Arch}}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - README.md
+      - LICENSE
+
+release:
+  github:
+    owner: cerifi
+    name: terraform-provider-auth0-connections
+  draft: false
+  prerelease: false
+  name_template: "v{{.Version}}"
+  mode: replace
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
