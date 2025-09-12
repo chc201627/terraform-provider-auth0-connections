@@ -40,10 +40,10 @@ release:
   mode: replace
   replace_existing_artifacts: true
 
-signs:
-  - artifacts: checksum
-    signature: "${artifact}.sig"
-    args: ["--batch", "--yes", "--detach-sign", "--armor", "--pinentry-mode", "loopback", "${artifact}"]
+# signs:
+#   - artifacts: checksum
+#     signature: "${artifact}.sig"
+#     args: ["--batch", "--yes", "--detach-sign", "--armor", "--pinentry-mode", "loopback", "${artifact}"]
 
 changelog:
   sort: asc
