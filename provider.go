@@ -114,7 +114,7 @@ func (p *Auth0ConnectionsProvider) Configure(ctx context.Context, req provider.C
 
 func (p *Auth0ConnectionsProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		// No resources for now, only data sources
+		NewApplicationConnectionsResource,
 	}
 }
 
